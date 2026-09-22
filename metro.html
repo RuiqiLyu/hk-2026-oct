@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#2e7d5f">
+<title>市内交通 · 香港三天 · 2026.10.17–19</title>
+<style>
+:root {
+  --bg: #fbf7f0;
+  --bg-2: #ffffff;
+  --ink: #1a1815;
+  --ink-2: #55504a;
+  --ink-3: #8b857e;
+  --line: #ebe3d3;
+  --accent: #2e7d5f;         /* 主色改为叮叮车绿 */
+  --accent-2: #37628f;
+  --accent-3: #d4a24c;
+  --accent-4: #b23a2a;
+  --warn: #c1652a;
+  --card-shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px -8px rgba(0,0,0,.08);
+  --radius: 14px;
+  --serif: "Cormorant Garamond", "Noto Serif SC", "Songti SC", "Source Han Serif SC", Georgia, serif;
+  --sans: -apple-system, "SF Pro Text", "PingFang SC", "Microsoft YaHei", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #14110e; --bg-2: #1e1a15; --ink: #f2ece2; --ink-2: #c9c1b3; --ink-3: #8a8377; --line: #2d271f;
+    --accent: #4fa48a; --accent-2: #6e8bc4; --accent-3: #e0b96b; --accent-4: #e0654e;
+    --card-shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -8px rgba(0,0,0,.6); }
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+body { padding: 20px 16px 80px; max-width: 960px; margin: 0 auto; }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px dashed currentColor; }
+h1, h2, h3, h4 { font-family: var(--serif); font-weight: 600; color: var(--ink); }
+h1 { font-size: clamp(28px, 6vw, 40px); line-height: 1.15; }
+h2 { font-size: clamp(20px, 4vw, 26px); margin: 36px 0 12px; display: flex; align-items: center; gap: 10px; }
+h2 .num { font-size: .7em; color: var(--accent); font-style: italic; }
+h3 { font-size: 17px; margin: 10px 0 4px; color: var(--ink); }
+p { color: var(--ink-2); font-size: 14px; }
+
+.hero { border-bottom: 1px solid var(--line); padding-bottom: 22px; margin-bottom: 20px; }
+.hero .kicker { color: var(--accent); font-family: var(--serif); font-style: italic; font-size: 15px; margin-bottom: 6px; }
+.hero .subtitle { color: var(--ink-2); margin-top: 8px; font-size: 14px; }
+.nav-bar { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+.nav-bar a { background: var(--bg-2); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 13px; text-decoration: none; color: var(--ink-2); }
+.nav-bar a.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.nav-bar a:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Payment compare */
+.pay-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin: 12px 0 20px; }
+.pay-card { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; box-shadow: var(--card-shadow); border-top: 4px solid var(--ink-3); position: relative; }
+.pay-card.rec { border-top-color: var(--accent); }
+.pay-card.rec::after { content: "推荐"; position: absolute; top: 8px; right: 10px; background: var(--accent); color: #fff; font-size: 10px; padding: 2px 8px; border-radius: 999px; letter-spacing: 1px; }
+.pay-card h3 { color: var(--ink); font-family: var(--serif); font-size: 17px; margin-bottom: 6px; }
+.pay-card .price { font-family: var(--serif); font-size: 22px; color: var(--accent); font-weight: 600; margin: 4px 0; }
+.pay-card ul { list-style: none; padding: 0; margin-top: 6px; font-size: 13px; color: var(--ink-2); }
+.pay-card ul li { padding: 3px 0; }
+.pay-card ul li::before { content: "▸ "; color: var(--accent); }
+
+/* Transport table */
+.trans-mode { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 22px; margin-bottom: 16px; box-shadow: var(--card-shadow); border-left: 4px solid var(--accent); }
+.trans-mode h3 { font-family: var(--serif); font-size: 20px; margin: 0 0 4px; }
+.trans-mode .sub { color: var(--ink-3); font-size: 12px; font-style: italic; letter-spacing: 1px; margin-bottom: 12px; }
+.trans-mode .row { display: grid; grid-template-columns: 80px 1fr; gap: 12px; padding: 6px 0; border-bottom: 1px dashed var(--line); font-size: 14px; }
+.trans-mode .row:last-child { border-bottom: none; }
+.trans-mode .row .k { color: var(--ink-3); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; padding-top: 2px; }
+.trans-mode .row .v { color: var(--ink-2); }
+.trans-mode .row .v b { color: var(--ink); }
+.trans-mode .row .v em { color: var(--accent); font-style: normal; font-weight: 500; }
+
+.callout { background: #fdf5ed; border: 1px solid #f0d9b8; border-left: 4px solid var(--warn); border-radius: 10px; padding: 14px 16px; margin: 14px 0; font-size: 14px; color: #6b4a25; }
+@media (prefers-color-scheme: dark) {
+  .callout { background: #2a2016; border-color: #4a3a20; color: #d4b586; }
+}
+.callout b { color: var(--warn); }
+
+.line-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin-top: 8px; }
+.line-item { padding: 10px 12px; background: var(--bg); border-radius: 8px; border-left: 3px solid; font-size: 13px; color: var(--ink-2); }
+.line-item b { color: var(--ink); display: block; margin-bottom: 2px; }
+.line-red { border-color: #d33; }
+.line-blue { border-color: #37628f; }
+.line-green { border-color: #2e7d5f; }
+.line-yellow { border-color: #d4a24c; }
+.line-purple { border-color: #8654a3; }
+
+.tip { background: var(--bg-2); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 10px; padding: 14px 16px; margin: 10px 0; font-size: 14px; color: var(--ink-2); }
+.tip h4 { font-family: var(--serif); font-size: 16px; color: var(--ink); margin-bottom: 4px; }
+.tip b { color: var(--ink); }
+
+footer { margin-top: 60px; padding: 30px 0 10px; border-top: 1px solid var(--line); text-align: center; color: var(--ink-3); font-family: var(--serif); font-style: italic; }
+footer .sig { font-size: 18px; color: var(--accent); margin-bottom: 6px; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="kicker">In-city Transit · MTR · Tram · Star Ferry · K1</div>
+  <h1>🚇 市内交通</h1>
+  <div class="subtitle">3 天在香港怎么坐地铁、叮叮车、天星小轮、K1 巴士 · 一次搞懂</div>
+  <nav class="nav-bar">
+    <a href="index.html">🏠 主页</a>
+    <a href="travel.html">✈️ 大交通</a>
+    <a href="metro.html" class="active">🚇 市内交通</a>
+  </nav>
+</header>
+
+<!-- 支付方式对比 -->
+<h2><span class="num">01</span>💳 支付方式对比</h2>
+<p style="margin-bottom:8px;">香港市内交通有 3 种付法。<b>推荐直接用支付宝的电子八达通</b>：不用买实体卡，换手机不用带，也能开多张。</p>
+
+<div class="pay-grid">
+  <div class="pay-card rec">
+    <h3>📱 电子八达通</h3>
+    <div class="price">HK$0 起</div>
+    <ul>
+      <li>支付宝 → "香港八达通" 直接领</li>
+      <li>充 HK$150 起 · 每人一张</li>
+      <li>地铁 / 巴士 / 叮叮车 / 小轮 / 便利店都能刷</li>
+      <li>不用买实体卡 · 不用押金</li>
+      <li>回程剩余可退回支付宝</li>
+    </ul>
+  </div>
+
+  <div class="pay-card">
+    <h3>💳 实体八达通</h3>
+    <div class="price">HK$150 起</div>
+    <ul>
+      <li>机场便利店 / 地铁站买</li>
+      <li>HK$50 押金 + HK$100 储值</li>
+      <li>退卡时押金 + 余额都退</li>
+      <li>无信号也能刷</li>
+      <li>不习惯手机操作可选这个</li>
+    </ul>
+  </div>
+
+  <div class="pay-card">
+    <h3>💰 现金</h3>
+    <div class="price">HK$1,500</div>
+    <ul>
+      <li>叮叮车、小轮、老铺、街边小食认现金</li>
+      <li><b>不建议单独用现金</b>：地铁买单程票排队 + 贵</li>
+      <li>作为八达通的备用现金即可</li>
+    </ul>
+  </div>
+</div>
+
+<div class="callout">
+  <b>👴 长者八达通能用吗？</b> 香港长者八达通 / 两元乘车都要 <b>60 岁及以上</b>，且长者八达通需持香港身份证，游客办不了。<b>普通旅客买同款成人八达通即可</b>。
+</div>
+
+<!-- MTR 港铁 -->
+<h2><span class="num">02</span>🚇 港铁 MTR · 主用线路</h2>
+
+<div class="trans-mode">
+  <h3>MTR 港铁</h3>
+  <div class="sub">用来跨海通勤（湾仔↔尖沙咀↔油麻地↔旺角）</div>
+  <div class="row"><div class="k">价格</div><div class="v">HK$4.5 – HK$15 · 按里程算 · 八达通付款</div></div>
+  <div class="row"><div class="k">运营</div><div class="v">早 06:00 – 凌晨 01:00</div></div>
+  <div class="row"><div class="k">你会用的线</div><div class="v">见下方线路列表</div></div>
+  <div class="row"><div class="k">下载 App</div><div class="v"><b>MTR Mobile</b>（官方，Android/iOS）· 有中英繁三语</div></div>
+  <div class="row"><div class="k">乘车注意</div><div class="v">车厢禁食禁饮 · 违者 HK$5000 罚款 · <em>行李箱高峰期靠一侧站</em></div></div>
+</div>
+
+<h3 style="margin-top:18px;">🚇 你会用到的 4 条线</h3>
+<div class="line-list">
+  <div class="line-item line-blue">
+    <b>港岛线 Island Line 🔵</b>
+    金钟 · 湾仔 · 铜锣湾 · 中环 · 上环 · 北角
+    <br><small>Day 2 湾仔↔中环（太平山）· Day 3 湾仔→中环→香港站</small>
+  </div>
+  <div class="line-item line-red">
+    <b>荃湾线 Tsuen Wan Line 🔴</b>
+    中环 · 金钟 · 尖沙咀 · 佐敦 · 油麻地 · 旺角
+    <br><small>Day 1 傍晚 湾仔→油麻地→旺角→尖沙咀 全走一遍</small>
+  </div>
+  <div class="line-item line-green">
+    <b>东涌线 Tung Chung Line 🟢</b>
+    香港站 · 九龙 · 青衣 · 东涌
+    <br><small>不用 · 除非从九龙站上机场快线</small>
+  </div>
+  <div class="line-item line-purple">
+    <b>机场快线 Airport Express 🟣</b>
+    香港 · 九龙 · 青衣 · 机场 · 博览馆
+    <br><small>Day 1 抵港 + Day 3 返程</small>
+  </div>
+</div>
+
+<h3 style="margin-top:18px;">📍 你会用到的车站（对应行程）</h3>
+<div class="line-list">
+  <div class="line-item line-blue">
+    <b>Wan Chai 湾仔</b>
+    A3 出口出去是港湾道，走 5 分钟到 YMCA
+  </div>
+  <div class="line-item line-blue">
+    <b>Central 中环</b>
+    C 出口地下通道直连香港站；A 出口出去是雪厂街，靠近兰芳园
+  </div>
+  <div class="line-item line-red">
+    <b>Tsim Sha Tsui 尖沙咀</b>
+    F 出口出去是星光大道方向 · L 出口是重庆大厦
+  </div>
+  <div class="line-item line-red">
+    <b>Yau Ma Tei 油麻地</b>
+    C 出口靠庙街（美都餐室方向） · B2 出口靠上海街
+  </div>
+  <div class="line-item line-red">
+    <b>Mong Kok 旺角</b>
+    E2 出口是花墟方向 · D3 出口是女人街
+  </div>
+</div>
+
+<!-- 叮叮车 -->
+<h2><span class="num">03</span>🚋 叮叮车 · 港岛北岸慢生活</h2>
+
+<div class="trans-mode">
+  <h3>Hong Kong Tramways 电车</h3>
+  <div class="sub">115 年历史双层老电车 · 港岛专属 · 时速 25 km/h</div>
+  <div class="row"><div class="k">价格</div><div class="v"><b>HK$3 一段票</b>（不管坐多远都 HK$3）· 八达通付款</div></div>
+  <div class="row"><div class="k">运营</div><div class="v">早 05:00 – 深夜 24:00 · 每 3-5 分钟一班</div></div>
+  <div class="row"><div class="k">上车</div><div class="v"><b>后门上</b> · 前门下 · <em>下车时才付钱</em></div></div>
+  <div class="row"><div class="k">最佳座位</div><div class="v"><em>上层最前排</em> · 视野最好 · 想拍照建议提前 1 站在下面排队</div></div>
+  <div class="row"><div class="k">路线</div><div class="v">6 条主线穿港岛北岸：<b>坚尼地城 ↔ 筲箕湾</b> 长贯</div></div>
+  <div class="row"><div class="k">你会坐</div><div class="v">Day 2 上下午各一次：<b>湾仔庄士敦道 ↔ 中环花园道</b>（25 分钟穿老城）</div></div>
+</div>
+
+<div class="tip">
+  <h4>📸 上层怎么坐上前排</h4>
+  <b>1</b> 到站早一点，看到电车进站立刻从后门上，直冲二楼 · <b>2</b> 上层楼梯口就是前排 · <b>3</b> 如果前排有人，从旁边窗户位子拍照效果也很好。<br>
+  上楼梯注意扶稳 —— 电车启动摇晃。
+</div>
+
+<!-- 天星小轮 -->
+<h2><span class="num">04</span>⛴️ 天星小轮 · 128 年的维港</h2>
+
+<div class="trans-mode">
+  <h3>Star Ferry 天星小轮</h3>
+  <div class="sub">1898 年开航 · 维港往返 · 全世界最便宜的城市轮渡之一</div>
+  <div class="row"><div class="k">价格</div><div class="v"><b>HK$5</b> 单程（周末稍贵 HK$6.5）· 八达通付款</div></div>
+  <div class="row"><div class="k">运营</div><div class="v">早 06:30 – 23:30 · 每 8-12 分钟一班</div></div>
+  <div class="row"><div class="k">航线</div><div class="v"><b>湾仔 ↔ 尖沙咀</b>（7 分钟）· <b>中环 ↔ 尖沙咀</b>（8 分钟）</div></div>
+  <div class="row"><div class="k">最佳位置</div><div class="v"><b>上层甲板</b>视野最好 · 下层稍便宜但看不到大景</div></div>
+  <div class="row"><div class="k">你会坐</div><div class="v">Day 1 晚 <b>湾仔码头 → 尖沙咀</b>（19:45）</div></div>
+</div>
+
+<div class="tip">
+  <h4>🌊 晕船怎么办</h4>
+  维港里水面平稳，7 分钟内到达，一般不会晕。备晕船药以防万一。海风大，<b>薄外套记得穿</b>。
+</div>
+
+<!-- K1 -->
+<h2><span class="num">05</span>🚌 机场快线 K 线接驳巴士</h2>
+
+<div class="trans-mode">
+  <h3>Airport Express Shuttle Bus · K1 / K3 / K4 / K5</h3>
+  <div class="sub">香港站/九龙站到市区各大酒店 · 凭机场快线票免费</div>
+  <div class="row"><div class="k">价格</div><div class="v"><b>免费</b>（凭当天机场快线票根或电子票）</div></div>
+  <div class="row"><div class="k">运营</div><div class="v">早 06:00 – 23:00 · 每 20 分钟一班</div></div>
+  <div class="row"><div class="k">你会用</div><div class="v"><b>K1 线</b>：香港站 → 湾仔君悦酒店 → 铜锣湾 → 北角 · 3 站到 YMCA</div></div>
+  <div class="row"><div class="k">上车</div><div class="v">香港站 <b>E1 出口</b> 出来到 K1 站牌</div></div>
+  <div class="row"><div class="k">Day 3 返程</div><div class="v">早上退房后走 3 分钟到湾仔君悦门口坐 K1 回香港站</div></div>
+</div>
+
+<!-- 山顶缆车 -->
+<h2><span class="num">06</span>🚠 山顶缆车（额外）</h2>
+
+<div class="trans-mode">
+  <h3>Peak Tram 山顶缆车</h3>
+  <div class="sub">1888 年通车 · 香港最古老的机械交通</div>
+  <div class="row"><div class="k">价格</div><div class="v"><b>HK$88</b> 缆车单程 + <b>HK$70</b> 凌霄阁摩天台 · <em>Klook 套票 ~HK$140</em></div></div>
+  <div class="row"><div class="k">运营</div><div class="v">早 07:30 – 23:00</div></div>
+  <div class="row"><div class="k">乘车</div><div class="v">中环花园道下站上车 · 全长 1.4 公里 · 最陡处 27°</div></div>
+  <div class="row"><div class="k">最佳座位</div><div class="v"><em>右侧</em>（面朝山顶方向）· 上山时看维港全景</div></div>
+  <div class="row"><div class="k">建议</div><div class="v"><b>提前 Klook 买套票</b>免排一半队 · 现场排队 30-60 分钟正常</div></div>
+</div>
+
+<!-- 防扒警告 -->
+<h2><span class="num">07</span>⚠️ 治安提醒</h2>
+
+<div class="callout">
+  <b>👛 高风险地点</b>：<b>尖沙咀重庆大厦附近</b>（游客集中）· <b>旺角女人街</b>（人挤人）· <b>庙街夜市</b>（灯光昏暗）。<br>
+  <b>防扒 3 招</b>：斜挎小包挂胸前 · 手机不放屁股口袋 · 包放胸前抱着。
+</div>
+
+<div class="tip">
+  <h4>🚨 遇事怎么办</h4>
+  丢东西 / 走失 / 摔伤 → <b>拨 999</b>（警察、消防、救护一号通）· 24 小时中文服务。<br>
+  丢护照 / 通行证 → 联系 <b>中国驻香港特派员公署</b> +852 2100 2200
+</div>
+
+<!-- App 推荐 -->
+<h2><span class="num">08</span>📱 交通类必备 App</h2>
+<div class="pay-grid">
+  <div class="pay-card">
+    <h3>🚇 MTR Mobile</h3>
+    <ul>
+      <li>官方港铁 App</li>
+      <li>实时票价 + 车站信息</li>
+      <li>中英繁三语</li>
+      <li>iOS / Android 免费</li>
+    </ul>
+  </div>
+  <div class="pay-card rec">
+    <h3>🗺️ Citymapper</h3>
+    <ul>
+      <li>综合导航（地铁 + 巴士 + 步行）</li>
+      <li>准确度比 Google Maps 高</li>
+      <li>算路径最省时间</li>
+      <li>iOS / Android 免费</li>
+    </ul>
+  </div>
+  <div class="pay-card">
+    <h3>🍜 OpenRice</h3>
+    <ul>
+      <li>港版大众点评</li>
+      <li>老铺 / 街边小店都有</li>
+      <li>可看营业时间 + 排队情况</li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  <div class="sig">Ride the tram, hear the ding-ding 🚋</div>
+  <small>HKG · 2026 · 市内交通</small>
+</footer>
+
+</body>
+</html>
