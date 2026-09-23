@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -121,7 +121,8 @@ small { color: var(--ink-3); font-size: 12px; }
 .event .title { font-size: 16px; font-weight: 500; margin: 2px 0 4px; color: var(--ink); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .event .title .tag { font-size: 10px; padding: 2px 6px; border-radius: 4px; background: var(--warn); color: #fff; letter-spacing: 1px; font-weight: 500; }
 .event .title a.map-link { font-size: 12px; color: var(--accent-4); border-bottom: 1px solid currentColor; }
-.event .title a.map-link.apple { color: var(--ink-2); }
+.event .title a.map-link.citymapper { color: var(--accent-2); }
+.event .title a.map-link.citymapper { color: var(--ink-2); }
 .event .desc { color: var(--ink-2); font-size: 14px; }
 .event .desc em { color: var(--accent); font-style: normal; font-weight: 500; }
 .event .desc b { color: var(--ink); font-weight: 500; }
@@ -417,7 +418,7 @@ const HOTEL = {
   name: '香港基督教青年会宾馆 The Harbourview',
   addr: '香港湾仔港湾道 4 号',
   gmap: 'https://www.google.com/maps/search/?api=1&query=The+Harbourview+YMCA+Hong+Kong+Wan+Chai',
-  amap: 'https://maps.apple.com/?q=The+Harbourview+YMCA+Hong+Kong'
+  cmap: 'https://citymapper.com/directions?endname=The+Harbourview+YMCA+Hong+Kong&region_id=hk-hongkong'
 };
 
 // 每个 event: {t, type: attraction/transit/food/rest/booking, title, place, desc, tag?}
@@ -430,21 +431,21 @@ const days = [
     transport: '机场快线 + K1 + 叮叮车 + 天星小轮',
     stay: HOTEL,
     events: [
-      { t: '06:00', type: 'rest', title: '起床 · 去天府 T1', place: 'Chengdu Tianfu International Airport', gmap: 'https://www.google.com/maps/search/?api=1&query=Chengdu+Tianfu+International+Airport', amap: 'https://maps.apple.com/?q=Chengdu+Tianfu+International+Airport', desc: '打车/地铁 到 <b>天府机场 T1</b> · 7:10 前完成值机' },
-      { t: '09:10', type: 'transit', title: '✈️ 国航 CA 天府 T1 起飞 → 香港 T1', place: 'Chengdu Tianfu T1', gmap: 'https://www.google.com/maps/search/?api=1&query=Chengdu+Tianfu+Airport+T1', amap: 'https://maps.apple.com/?q=Chengdu+Tianfu+Airport+T1', desc: '直飞 <b>2h40m</b>，到港 11:50。<em>右侧靠窗看得到珠江口</em>' },
-      { t: '12:00', type: 'transit', title: '过关 → 香港机场快线', place: 'Hong Kong International Airport', gmap: 'https://www.google.com/maps/search/?api=1&query=Hong+Kong+International+Airport', amap: 'https://maps.apple.com/?q=Hong+Kong+International+Airport', desc: '走"访客通道"约 20 分钟。<b>机场快线</b> HK$115 · 24 分钟到香港站' },
-      { t: '12:55', type: 'transit', title: '香港站 → K1 免费穿梭巴士 → 湾仔', place: 'Hong Kong Station', gmap: 'https://www.google.com/maps/search/?api=1&query=Hong+Kong+Station', amap: 'https://maps.apple.com/?q=Hong+Kong+Station', desc: 'K1 每 20 分钟一班 · <em>凭机场快线票免费</em>' },
-      { t: '13:15', type: 'rest', title: 'YMCA 寄存行李 · 或提前 check-in', place: 'The Harbourview YMCA', gmap: HOTEL.gmap, amap: HOTEL.amap, desc: '前台 14:00 才办入住，早到可先寄存行李' },
-      { t: '13:30', type: 'food', title: '午餐 · 华姐清汤腩（湾仔骆克道 265 号地铺）', place: 'Wah Kee Beef Brisket Wan Chai', gmap: 'https://www.google.com/maps/search/?api=1&query=Wah+Kee+Beef+Brisket+Wan+Chai+Lockhart+Road', amap: 'https://maps.apple.com/?q=Wah+Kee+Beef+Brisket+Wan+Chai', tag: '街坊铺', desc: '<b>必点</b>：清汤牛腩河粉 + 咸柠七。米其林推荐街坊铺，人均 HK$80' },
-      { t: '14:30', type: 'rest', title: '🛌 回酒店睡午觉 3 小时', place: HOTEL.name, gmap: HOTEL.gmap, amap: HOTEL.amap, tag: '重要', desc: '早起 6 点了，补一觉再继续。<b>17:00 出门</b>' },
-      { t: '17:00', type: 'transit', title: '★ 叮叮车 · 湾仔庄士敦道 → 中环', place: 'Wan Chai Tram Stop', gmap: 'https://www.google.com/maps/search/?api=1&query=Wan+Chai+Tram+Johnston+Road', amap: 'https://maps.apple.com/?q=Wan+Chai+Tram+Johnston+Road', tag: '必打卡', desc: '<b>HK$3</b> · <em>上层最前排</em>，25 分钟穿过老城慢慢晃到中环' },
-      { t: '17:30', type: 'attraction', title: '★ 天星小轮 · 中环 → 尖沙咀', place: 'Star Ferry Central Pier', gmap: 'https://www.google.com/maps/search/?api=1&query=Star+Ferry+Central+Pier', amap: 'https://maps.apple.com/?q=Star+Ferry+Central', tag: '必打卡', desc: '<b>HK$5 · 上层</b> · 8 分钟看维港黄昏' },
-      { t: '17:45', type: 'attraction', title: '★ 尖沙咀星光大道 + 维港日落', place: 'Avenue of Stars TST', gmap: 'https://www.google.com/maps/search/?api=1&query=Avenue+of+Stars+Hong+Kong', amap: 'https://maps.apple.com/?q=Avenue+of+Stars+Tsim+Sha+Tsui', tag: '必打卡', desc: '日落约 18:05 · 沿海滨长廊走 · 李小龙铜像、明星手印全打卡' },
-      { t: '18:45', type: 'food', title: '晚餐 · 潮福蒸笼（尖沙咀 The One 商场 UG 层）', place: 'Chao Fu Zheng Long TST The One', gmap: 'https://www.google.com/maps/search/?api=1&query=Chao+Fu+Zheng+Long+The+One+TST', amap: 'https://maps.apple.com/?q=Chao+Fu+Zheng+Long+The+One+TST', tag: '走人多不用等', desc: '<b>必点</b>：反沙芋头、红桃粿、明档虾饺、豉汁凤爪、蜜汁叉烧包。人均 HK$150 · 早点吃出来接灯光秀' },
-      { t: '20:00', type: 'attraction', title: '⭐ 幻彩咏香江灯光秀', place: 'Avenue of Stars TST', gmap: 'https://www.google.com/maps/search/?api=1&query=Avenue+of+Stars+Hong+Kong', amap: 'https://maps.apple.com/?q=Avenue+of+Stars+Tsim+Sha+Tsui', tag: '必打卡', desc: '<b>20:00 准时开始 13 分钟</b> · 从潮福出来 3 分钟走回海滨长廊看 · 建议 19:55 到' },
-      { t: '20:30', type: 'attraction', title: '尖沙咀维港夜景慢逛', place: 'TST Waterfront', gmap: 'https://www.google.com/maps/search/?api=1&query=Tsim+Sha+Tsui+Waterfront', amap: 'https://maps.apple.com/?q=Tsim+Sha+Tsui+Waterfront', desc: '看完灯光秀不急着走 · 沿海滨慢慢逛回钟楼 · 拍照打卡' },
-      { t: '21:30', type: 'transit', title: '★ 天星小轮 · 尖沙咀 → 湾仔', place: 'Star Ferry TST Pier', gmap: 'https://www.google.com/maps/search/?api=1&query=Star+Ferry+Tsim+Sha+Tsui+Pier', amap: 'https://maps.apple.com/?q=Star+Ferry+TST', desc: '<b>HK$5</b> · 7 分钟坐船回湾仔（末班约 22:30）' },
-      { t: '22:00', type: 'rest', title: '回酒店休息', place: HOTEL.name, gmap: HOTEL.gmap, amap: HOTEL.amap, desc: '早睡 · 明天 9:00 出门' }
+      { t: '06:00', type: 'rest', title: '起床 · 去天府 T1', place: 'Chengdu Tianfu International Airport', gmap: 'https://www.google.com/maps/search/?api=1&query=Chengdu+Tianfu+International+Airport', cmap: 'https://citymapper.com/directions?endname=Chengdu+Tianfu+International+Airport&region_id=hk-hongkong', desc: '打车/地铁 到 <b>天府机场 T1</b> · 7:10 前完成值机' },
+      { t: '09:10', type: 'transit', title: '✈️ 国航 CA 天府 T1 起飞 → 香港 T1', place: 'Chengdu Tianfu T1', gmap: 'https://www.google.com/maps/search/?api=1&query=Chengdu+Tianfu+Airport+T1', cmap: 'https://citymapper.com/directions?endname=Chengdu+Tianfu+Airport+T1&region_id=hk-hongkong', desc: '直飞 <b>2h40m</b>，到港 11:50。<em>右侧靠窗看得到珠江口</em>' },
+      { t: '12:00', type: 'transit', title: '过关 → 香港机场快线', place: 'Hong Kong International Airport', gmap: 'https://www.google.com/maps/search/?api=1&query=Hong+Kong+International+Airport', cmap: 'https://citymapper.com/directions?endname=Hong+Kong+International+Airport&region_id=hk-hongkong', desc: '走"访客通道"约 20 分钟。<b>机场快线</b> HK$115 · 24 分钟到香港站' },
+      { t: '12:55', type: 'transit', title: '香港站 → K1 免费穿梭巴士 → 湾仔', place: 'Hong Kong Station', gmap: 'https://www.google.com/maps/search/?api=1&query=Hong+Kong+Station', cmap: 'https://citymapper.com/directions?endname=Hong+Kong+Station&region_id=hk-hongkong', desc: 'K1 每 20 分钟一班 · <em>凭机场快线票免费</em>' },
+      { t: '13:15', type: 'rest', title: 'YMCA 寄存行李 · 或提前 check-in', place: 'The Harbourview YMCA', gmap: HOTEL.gmap, cmap: HOTEL.cmap, desc: '前台 14:00 才办入住，早到可先寄存行李' },
+      { t: '13:30', type: 'food', title: '午餐 · 华姐清汤腩（湾仔骆克道 265 号地铺）', place: 'Wah Kee Beef Brisket Wan Chai', gmap: 'https://www.google.com/maps/search/?api=1&query=Wah+Kee+Beef+Brisket+Wan+Chai+Lockhart+Road', cmap: 'https://citymapper.com/directions?endname=Wah+Kee+Beef+Brisket+Wan+Chai&region_id=hk-hongkong', tag: '街坊铺', desc: '<b>必点</b>：清汤牛腩河粉 + 咸柠七。米其林推荐街坊铺，人均 HK$80' },
+      { t: '14:30', type: 'rest', title: '🛌 回酒店睡午觉 3 小时', place: HOTEL.name, gmap: HOTEL.gmap, cmap: HOTEL.cmap, tag: '重要', desc: '早起 6 点了，补一觉再继续。<b>17:00 出门</b>' },
+      { t: '17:00', type: 'transit', title: '★ 叮叮车 · 湾仔庄士敦道 → 中环', place: 'Wan Chai Tram Stop', gmap: 'https://www.google.com/maps/search/?api=1&query=Wan+Chai+Tram+Johnston+Road', cmap: 'https://citymapper.com/directions?endname=Wan+Chai+Tram+Johnston+Road&region_id=hk-hongkong', tag: '必打卡', desc: '<b>HK$3</b> · <em>上层最前排</em>，25 分钟穿过老城慢慢晃到中环' },
+      { t: '17:30', type: 'attraction', title: '★ 天星小轮 · 中环 → 尖沙咀', place: 'Star Ferry Central Pier', gmap: 'https://www.google.com/maps/search/?api=1&query=Star+Ferry+Central+Pier', cmap: 'https://citymapper.com/directions?endname=Star+Ferry+Central&region_id=hk-hongkong', tag: '必打卡', desc: '<b>HK$5 · 上层</b> · 8 分钟看维港黄昏' },
+      { t: '17:45', type: 'attraction', title: '★ 尖沙咀星光大道 + 维港日落', place: 'Avenue of Stars TST', gmap: 'https://www.google.com/maps/search/?api=1&query=Avenue+of+Stars+Hong+Kong', cmap: 'https://citymapper.com/directions?endname=Avenue+of+Stars+Tsim+Sha+Tsui&region_id=hk-hongkong', tag: '必打卡', desc: '日落约 18:05 · 沿海滨长廊走 · 李小龙铜像、明星手印全打卡' },
+      { t: '18:45', type: 'food', title: '晚餐 · 潮福蒸笼（尖沙咀 The One 商场 UG 层）', place: 'Chao Fu Zheng Long TST The One', gmap: 'https://www.google.com/maps/search/?api=1&query=Chao+Fu+Zheng+Long+The+One+TST', cmap: 'https://citymapper.com/directions?endname=Chao+Fu+Zheng+Long+The+One+TST&region_id=hk-hongkong', tag: '走人多不用等', desc: '<b>必点</b>：反沙芋头、红桃粿、明档虾饺、豉汁凤爪、蜜汁叉烧包。人均 HK$150 · 早点吃出来接灯光秀' },
+      { t: '20:00', type: 'attraction', title: '⭐ 幻彩咏香江灯光秀', place: 'Avenue of Stars TST', gmap: 'https://www.google.com/maps/search/?api=1&query=Avenue+of+Stars+Hong+Kong', cmap: 'https://citymapper.com/directions?endname=Avenue+of+Stars+Tsim+Sha+Tsui&region_id=hk-hongkong', tag: '必打卡', desc: '<b>20:00 准时开始 13 分钟</b> · 从潮福出来 3 分钟走回海滨长廊看 · 建议 19:55 到' },
+      { t: '20:30', type: 'attraction', title: '尖沙咀维港夜景慢逛', place: 'TST Waterfront', gmap: 'https://www.google.com/maps/search/?api=1&query=Tsim+Sha+Tsui+Waterfront', cmap: 'https://citymapper.com/directions?endname=Tsim+Sha+Tsui+Waterfront&region_id=hk-hongkong', desc: '看完灯光秀不急着走 · 沿海滨慢慢逛回钟楼 · 拍照打卡' },
+      { t: '21:30', type: 'transit', title: '★ 天星小轮 · 尖沙咀 → 湾仔', place: 'Star Ferry TST Pier', gmap: 'https://www.google.com/maps/search/?api=1&query=Star+Ferry+Tsim+Sha+Tsui+Pier', cmap: 'https://citymapper.com/directions?endname=Star+Ferry+TST&region_id=hk-hongkong', desc: '<b>HK$5</b> · 7 分钟坐船回湾仔（末班约 22:30）' },
+      { t: '22:00', type: 'rest', title: '回酒店休息', place: HOTEL.name, gmap: HOTEL.gmap, cmap: HOTEL.cmap, desc: '早睡 · 明天 9:00 出门' }
     ]
   },
   {
@@ -455,18 +456,18 @@ const days = [
     transport: '叮叮车 × 2 · 山顶缆车',
     stay: HOTEL,
     events: [
-      { t: '09:00', type: 'food', title: '早餐 · 金凤茶餐厅（湾仔春园街 41 号）', place: 'Kam Fung Cafe Wan Chai', gmap: 'https://www.google.com/maps/search/?api=1&query=Kam+Fung+Cafe+Wan+Chai+Spring+Garden', amap: 'https://maps.apple.com/?q=Kam+Fung+Cafe+Spring+Garden+Wan+Chai', tag: '菠萝油圣地', desc: '<b>必点</b>：现烤菠萝油 + 冻奶茶 + 西多士。老铁皮档口，人均 HK$50，经典老咖啡店' },
-      { t: '10:00', type: 'transit', title: '★ 叮叮车 · 湾仔庄士敦道 → 中环花园道', place: 'Wan Chai Tram Stop', gmap: 'https://www.google.com/maps/search/?api=1&query=Wan+Chai+Tram+Johnston+Road', amap: 'https://maps.apple.com/?q=Wan+Chai+Tram+Johnston+Road', tag: '必打卡', desc: '<b>HK$3</b> · <em>坐上层最前排</em>，25 分钟穿过老城慢慢晃到中环' },
-      { t: '10:30', type: 'attraction', title: '花园道山顶缆车站', place: 'Peak Tram Central Terminus', gmap: 'https://www.google.com/maps/search/?api=1&query=Peak+Tram+Central+Terminus+Garden+Road', amap: 'https://maps.apple.com/?q=Peak+Tram+Central+Terminus', desc: '用 <b>Klook 电子票</b>免排一半队，直接扫码上车' },
-      { t: '11:00', type: 'attraction', title: '★ 太平山顶 · 山顶缆车 + 凌霄阁摩天台', place: 'Victoria Peak Sky Terrace', gmap: 'https://www.google.com/maps/search/?api=1&query=Sky+Terrace+428+Victoria+Peak', amap: 'https://maps.apple.com/?q=Sky+Terrace+428+Hong+Kong', tag: '必打卡', desc: '1888 年通车百年缆车 → 凌霄阁摩天台看维港白天全景 → 山顶广场逛逛。<em>可待 2 小时</em>' },
-      { t: '13:00', type: 'attraction', title: '顺访 · 圣约翰座堂', place: 'St John Cathedral Hong Kong', gmap: 'https://www.google.com/maps/search/?api=1&query=St+John+Cathedral+Hong+Kong', amap: 'https://maps.apple.com/?q=St+John+Cathedral+Hong+Kong', desc: '缆车下站旁 3 分钟走路 · <b>1849 年英式哥特教堂</b>，全港最古老 · 可以进去坐 5 分钟静一下' },
-      { t: '13:15', type: 'transit', title: '花园道 → 湾仔轩尼诗道（步行 + 叮叮车）', place: 'Central to Wan Chai', gmap: 'https://www.google.com/maps/dir/?api=1&origin=Peak+Tram+Central+Terminus&destination=Kam%27s+Roast+Goose+Wan+Chai&travelmode=walking', amap: 'https://maps.apple.com/?q=Central+to+Wan+Chai', desc: '沿花园道下坡到皇后大道 · <em>叮叮车再坐一次</em>，15 分钟到甘牌门口' },
-      { t: '13:30', type: 'food', title: '午餐 · ★ 甘牌烧鹅（湾仔轩尼诗道 226 号地铺）', place: 'Kam Roast Goose Wan Chai', gmap: 'https://www.google.com/maps/search/?api=1&query=Kam%27s+Roast+Goose+Wan+Chai', amap: 'https://maps.apple.com/?q=Kam%27s+Roast+Goose+Wan+Chai', tag: '米其林一星 · 走人排队 30 分钟', desc: '<b>必点</b>：招牌烧鹅髀 + 烧鹅汤面 + 例牌烧腩仔 + 例汤。<em>不接受订位 · walk-in only</em> · 人均 HK$180' },
-      { t: '15:00', type: 'transit', title: '走回酒店（步行 8 分钟）', place: HOTEL.name, gmap: HOTEL.gmap, amap: HOTEL.amap, desc: '轩尼诗道走回港湾道 YMCA' },
-      { t: '15:30', type: 'rest', title: '🛌 酒店睡午觉', place: HOTEL.name, gmap: HOTEL.gmap, amap: HOTEL.amap, tag: '重要', desc: '中午吃太多 · <b>睡 2 小时</b>比什么都值' },
-      { t: '17:30', type: 'attraction', title: '湾仔老区散步 · 蓝屋 + 和昌大押 + 太原街', place: 'Blue House Wan Chai', gmap: 'https://www.google.com/maps/search/?api=1&query=Blue+House+Wan+Chai', amap: 'https://maps.apple.com/?q=Blue+House+Wan+Chai', desc: '<b>蓝屋</b>（1922 唐楼，三级历史建筑）→ <b>和昌大押</b>（1888 老典当行外观）→ <b>太原街玩具街</b>，都在半径 500 米内，慢慢逛' },
-      { t: '19:00', type: 'food', title: '轻晚餐 · 强记米线 或 檀岛咖啡饼店', place: 'Keung Kee Wan Chai', gmap: 'https://www.google.com/maps/search/?api=1&query=Honolulu+Cafe+Wan+Chai+Hennessy', amap: 'https://maps.apple.com/?q=Honolulu+Cafe+Wan+Chai', desc: '强记米线小份 · <b>或</b> 檀岛的 24 层酥皮蛋挞 + 鸳鸯当晚饭，别再重口了' },
-      { t: '21:00', type: 'rest', title: '回酒店休息', place: HOTEL.name, gmap: HOTEL.gmap, amap: HOTEL.amap, desc: '明早 9:30 就 check-out，早点睡' }
+      { t: '09:00', type: 'food', title: '早餐 · 金凤茶餐厅（湾仔春园街 41 号）', place: 'Kam Fung Cafe Wan Chai', gmap: 'https://www.google.com/maps/search/?api=1&query=Kam+Fung+Cafe+Wan+Chai+Spring+Garden', cmap: 'https://citymapper.com/directions?endname=Kam+Fung+Cafe+Spring+Garden+Wan+Chai&region_id=hk-hongkong', tag: '菠萝油圣地', desc: '<b>必点</b>：现烤菠萝油 + 冻奶茶 + 西多士。老铁皮档口，人均 HK$50，经典老咖啡店' },
+      { t: '10:00', type: 'transit', title: '★ 叮叮车 · 湾仔庄士敦道 → 中环花园道', place: 'Wan Chai Tram Stop', gmap: 'https://www.google.com/maps/search/?api=1&query=Wan+Chai+Tram+Johnston+Road', cmap: 'https://citymapper.com/directions?endname=Wan+Chai+Tram+Johnston+Road&region_id=hk-hongkong', tag: '必打卡', desc: '<b>HK$3</b> · <em>坐上层最前排</em>，25 分钟穿过老城慢慢晃到中环' },
+      { t: '10:30', type: 'attraction', title: '花园道山顶缆车站', place: 'Peak Tram Central Terminus', gmap: 'https://www.google.com/maps/search/?api=1&query=Peak+Tram+Central+Terminus+Garden+Road', cmap: 'https://citymapper.com/directions?endname=Peak+Tram+Central+Terminus&region_id=hk-hongkong', desc: '用 <b>Klook 电子票</b>免排一半队，直接扫码上车' },
+      { t: '11:00', type: 'attraction', title: '★ 太平山顶 · 山顶缆车 + 凌霄阁摩天台', place: 'Victoria Peak Sky Terrace', gmap: 'https://www.google.com/maps/search/?api=1&query=Sky+Terrace+428+Victoria+Peak', cmap: 'https://citymapper.com/directions?endname=Sky+Terrace+428+Hong+Kong&region_id=hk-hongkong', tag: '必打卡', desc: '1888 年通车百年缆车 → 凌霄阁摩天台看维港白天全景 → 山顶广场逛逛。<em>可待 2 小时</em>' },
+      { t: '13:00', type: 'attraction', title: '顺访 · 圣约翰座堂', place: 'St John Cathedral Hong Kong', gmap: 'https://www.google.com/maps/search/?api=1&query=St+John+Cathedral+Hong+Kong', cmap: 'https://citymapper.com/directions?endname=St+John+Cathedral+Hong+Kong&region_id=hk-hongkong', desc: '缆车下站旁 3 分钟走路 · <b>1849 年英式哥特教堂</b>，全港最古老 · 可以进去坐 5 分钟静一下' },
+      { t: '13:15', type: 'transit', title: '花园道 → 湾仔轩尼诗道（步行 + 叮叮车）', place: 'Central to Wan Chai', gmap: 'https://www.google.com/maps/dir/?api=1&origin=Peak+Tram+Central+Terminus&destination=Kam%27s+Roast+Goose+Wan+Chai&travelmode=walking', cmap: 'https://citymapper.com/directions?endname=Central+to+Wan+Chai&region_id=hk-hongkong', desc: '沿花园道下坡到皇后大道 · <em>叮叮车再坐一次</em>，15 分钟到甘牌门口' },
+      { t: '13:30', type: 'food', title: '午餐 · ★ 甘牌烧鹅（湾仔轩尼诗道 226 号地铺）', place: 'Kam Roast Goose Wan Chai', gmap: 'https://www.google.com/maps/search/?api=1&query=Kam%27s+Roast+Goose+Wan+Chai', cmap: 'https://citymapper.com/directions?endname=Kam%27s+Roast+Goose+Wan+Chai&region_id=hk-hongkong', tag: '米其林一星 · 走人排队 30 分钟', desc: '<b>必点</b>：招牌烧鹅髀 + 烧鹅汤面 + 例牌烧腩仔 + 例汤。<em>不接受订位 · walk-in only</em> · 人均 HK$180' },
+      { t: '15:00', type: 'transit', title: '走回酒店（步行 8 分钟）', place: HOTEL.name, gmap: HOTEL.gmap, cmap: HOTEL.cmap, desc: '轩尼诗道走回港湾道 YMCA' },
+      { t: '15:30', type: 'rest', title: '🛌 酒店睡午觉', place: HOTEL.name, gmap: HOTEL.gmap, cmap: HOTEL.cmap, tag: '重要', desc: '中午吃太多 · <b>睡 2 小时</b>比什么都值' },
+      { t: '17:30', type: 'attraction', title: '湾仔老区散步 · 蓝屋 + 和昌大押 + 太原街', place: 'Blue House Wan Chai', gmap: 'https://www.google.com/maps/search/?api=1&query=Blue+House+Wan+Chai', cmap: 'https://citymapper.com/directions?endname=Blue+House+Wan+Chai&region_id=hk-hongkong', desc: '<b>蓝屋</b>（1922 唐楼，三级历史建筑）→ <b>和昌大押</b>（1888 老典当行外观）→ <b>太原街玩具街</b>，都在半径 500 米内，慢慢逛' },
+      { t: '19:00', type: 'food', title: '轻晚餐 · 强记米线 或 檀岛咖啡饼店', place: 'Keung Kee Wan Chai', gmap: 'https://www.google.com/maps/search/?api=1&query=Honolulu+Cafe+Wan+Chai+Hennessy', cmap: 'https://citymapper.com/directions?endname=Honolulu+Cafe+Wan+Chai&region_id=hk-hongkong', desc: '强记米线小份 · <b>或</b> 檀岛的 24 层酥皮蛋挞 + 鸳鸯当晚饭，别再重口了' },
+      { t: '21:00', type: 'rest', title: '回酒店休息', place: HOTEL.name, gmap: HOTEL.gmap, cmap: HOTEL.cmap, desc: '明早 9:30 就 check-out，早点睡' }
     ]
   },
   {
@@ -477,22 +478,22 @@ const days = [
     transport: 'MTR + K1 + 机场快线',
     stay: null,
     events: [
-      { t: '08:00', type: 'rest', title: '起床 · 早餐（YMCA 自助）', place: HOTEL.name, gmap: HOTEL.gmap, amap: HOTEL.amap, desc: '房价含自助早餐 · 7:00-10:00 供应' },
-      { t: '09:30', type: 'rest', title: 'Check out · 前台寄存行李', place: HOTEL.name, gmap: HOTEL.gmap, amap: HOTEL.amap, desc: '<b>行李寄存前台</b>，傍晚 15:30 回来取 · 一整天空手玩九龙' },
-      { t: '10:00', type: 'transit', title: 'MTR 湾仔 → 油麻地', place: 'Wan Chai MTR', gmap: 'https://www.google.com/maps/search/?api=1&query=Wan+Chai+MTR', amap: 'https://maps.apple.com/?q=Wan+Chai+MTR', desc: '港岛线 → 中环 → 换荃湾线 → 油麻地 · 约 20 分钟' },
-      { t: '10:30', type: 'food', title: '★ Brunch · 美都餐室（油麻地庙街 63 号）', place: 'Mido Cafe Yau Ma Tei', gmap: 'https://www.google.com/maps/search/?api=1&query=Mido+Cafe+Yau+Ma+Tei+Temple+Street', amap: 'https://maps.apple.com/?q=Mido+Cafe+Temple+Street', tag: '1950 老冰室', desc: '<b>《使徒行者》取景地</b> · <b>必点</b>：焗排骨饭 HK$75 + 菠萝油 + 冻奶茶 + 莲蓉西米露 · <em>坐二楼老卡座位置好</em>' },
-      { t: '12:00', type: 'attraction', title: '★ 油麻地老街 · 上海街 + 果栏', place: 'Yau Ma Tei Fruit Market', gmap: 'https://www.google.com/maps/search/?api=1&query=Yau+Ma+Tei+Fruit+Market', amap: 'https://maps.apple.com/?q=Yau+Ma+Tei+Fruit+Market', tag: '必打卡', desc: '<b>上海街战前唐楼骑楼</b> → <b>油麻地果栏</b>百年水果批发市场老棚子 → <b>天后庙</b>外观拍照即可' },
-      { t: '13:00', type: 'transit', title: '油麻地 → 旺角（沿弥敦道向北步行 15 分钟）', place: 'Nathan Road walk', gmap: 'https://www.google.com/maps/dir/?api=1&origin=Yau+Ma+Tei+MTR&destination=Flower+Market+Road+Mong+Kok&travelmode=walking', amap: 'https://maps.apple.com/?q=Nathan+Road+Yau+Ma+Tei', desc: '沿弥敦道慢慢走，边走边看店 · 累了坐 MTR 1 站' },
-      { t: '13:30', type: 'attraction', title: '★ 旺角 · 花墟 + 金鱼街 + 女人街', place: 'Flower Market Road Mong Kok', gmap: 'https://www.google.com/maps/search/?api=1&query=Flower+Market+Road+Mong+Kok', amap: 'https://maps.apple.com/?q=Flower+Market+Road+Mong+Kok', tag: '必打卡', desc: '<b>花墟道</b>整条街卖花 · <b>金鱼街</b>整条挂金鱼袋 · <b>通菜街女人街</b>小商品夜市（白天也开档）' },
-      { t: '14:45', type: 'food', title: '老冰室歇脚 · 中国冰室（旺角砵兰街 111 号）', place: 'China Cafe Mong Kok Portland', gmap: 'https://www.google.com/maps/search/?api=1&query=China+Cafe+Mong+Kok+Portland+Street', amap: 'https://maps.apple.com/?q=China+Cafe+Portland+Street+Mong+Kok', tag: '1964 老铺', desc: '<b>红胶座椅 + 老风扇</b> · <b>必点</b>：冻鸳鸯 + 蛋挞 + 菠萝包 · <em>拍照必坐窗边卡座</em>' },
-      { t: '15:30', type: 'transit', title: 'MTR 旺角 → 湾仔（取行李）', place: 'Mong Kok MTR', gmap: 'https://www.google.com/maps/search/?api=1&query=Mong+Kok+MTR', amap: 'https://maps.apple.com/?q=Mong+Kok+MTR', desc: '荃湾线到中环 → 换港岛线到湾仔 · 25 分钟' },
-      { t: '16:00', type: 'rest', title: 'YMCA 前台取行李', place: HOTEL.name, gmap: HOTEL.gmap, amap: HOTEL.amap, desc: '前台拿回寄存的行李 · 步行 3 分钟到湾仔君悦坐 K1' },
-      { t: '16:15', type: 'transit', title: 'K1 免费穿梭巴士 · 湾仔 → 香港站', place: 'Wan Chai K1 Bus Stop', gmap: 'https://www.google.com/maps/search/?api=1&query=Grand+Hyatt+Hong+Kong', amap: 'https://maps.apple.com/?q=Grand+Hyatt+Hong+Kong', tag: '免费', desc: '<b>免费</b> · 10 分钟到香港站' },
-      { t: '16:30', type: 'transit', title: '机场快线 · 香港站 → HKG', place: 'Hong Kong Station Airport Express', gmap: 'https://www.google.com/maps/search/?api=1&query=Hong+Kong+Station+Airport+Express', amap: 'https://maps.apple.com/?q=Hong+Kong+Station', desc: '<b>24 分钟直达 HKG</b> · 每 10 分钟一班' },
-      { t: '17:00', type: 'transit', title: 'HKG T1 · 川航自助值机', place: 'Hong Kong Airport T1', gmap: 'https://www.google.com/maps/search/?api=1&query=Hong+Kong+International+Airport+Terminal+1', amap: 'https://maps.apple.com/?q=Hong+Kong+Airport+Terminal+1', desc: '<b>不用托运</b> · 自助机器扫护照直接拿登机牌' },
-      { t: '17:15', type: 'transit', title: '过关 + 免税店', place: 'HKG Departure', gmap: 'https://www.google.com/maps/search/?api=1&query=Hong+Kong+International+Airport+Departure', amap: 'https://maps.apple.com/?q=Hong+Kong+International+Airport', desc: '<b>DFS、莎莎、万宁</b> · 妆品比市区莎莎更便宜 · 1 小时可以慢慢逛' },
-      { t: '18:40', type: 'transit', title: '✈️ 川航 3U 香港 T1 → 双流 T1', place: 'HKG Terminal 1', gmap: 'https://www.google.com/maps/search/?api=1&query=Hong+Kong+International+Airport+Terminal+1', amap: 'https://maps.apple.com/?q=Hong+Kong+Airport+Terminal+1', desc: '直飞 2h30m' },
-      { t: '21:10', type: 'transit', title: '🛬 到达成都双流 T1', place: 'Chengdu Shuangliu Airport T1', gmap: 'https://www.google.com/maps/search/?api=1&query=Chengdu+Shuangliu+Airport+T1', amap: 'https://maps.apple.com/?q=Chengdu+Shuangliu+Airport', desc: '到家 🏠' }
+      { t: '08:00', type: 'rest', title: '起床 · 早餐（YMCA 自助）', place: HOTEL.name, gmap: HOTEL.gmap, cmap: HOTEL.cmap, desc: '房价含自助早餐 · 7:00-10:00 供应' },
+      { t: '09:30', type: 'rest', title: 'Check out · 前台寄存行李', place: HOTEL.name, gmap: HOTEL.gmap, cmap: HOTEL.cmap, desc: '<b>行李寄存前台</b>，傍晚 15:30 回来取 · 一整天空手玩九龙' },
+      { t: '10:00', type: 'transit', title: 'MTR 湾仔 → 油麻地', place: 'Wan Chai MTR', gmap: 'https://www.google.com/maps/search/?api=1&query=Wan+Chai+MTR', cmap: 'https://citymapper.com/directions?endname=Wan+Chai+MTR&region_id=hk-hongkong', desc: '港岛线 → 中环 → 换荃湾线 → 油麻地 · 约 20 分钟' },
+      { t: '10:30', type: 'food', title: '★ Brunch · 美都餐室（油麻地庙街 63 号）', place: 'Mido Cafe Yau Ma Tei', gmap: 'https://www.google.com/maps/search/?api=1&query=Mido+Cafe+Yau+Ma+Tei+Temple+Street', cmap: 'https://citymapper.com/directions?endname=Mido+Cafe+Temple+Street&region_id=hk-hongkong', tag: '1950 老冰室', desc: '<b>《使徒行者》取景地</b> · <b>必点</b>：焗排骨饭 HK$75 + 菠萝油 + 冻奶茶 + 莲蓉西米露 · <em>坐二楼老卡座位置好</em>' },
+      { t: '12:00', type: 'attraction', title: '★ 油麻地老街 · 上海街 + 果栏', place: 'Yau Ma Tei Fruit Market', gmap: 'https://www.google.com/maps/search/?api=1&query=Yau+Ma+Tei+Fruit+Market', cmap: 'https://citymapper.com/directions?endname=Yau+Ma+Tei+Fruit+Market&region_id=hk-hongkong', tag: '必打卡', desc: '<b>上海街战前唐楼骑楼</b> → <b>油麻地果栏</b>百年水果批发市场老棚子 → <b>天后庙</b>外观拍照即可' },
+      { t: '13:00', type: 'transit', title: '油麻地 → 旺角（沿弥敦道向北步行 15 分钟）', place: 'Nathan Road walk', gmap: 'https://www.google.com/maps/dir/?api=1&origin=Yau+Ma+Tei+MTR&destination=Flower+Market+Road+Mong+Kok&travelmode=walking', cmap: 'https://citymapper.com/directions?endname=Nathan+Road+Yau+Ma+Tei&region_id=hk-hongkong', desc: '沿弥敦道慢慢走，边走边看店 · 累了坐 MTR 1 站' },
+      { t: '13:30', type: 'attraction', title: '★ 旺角 · 花墟 + 金鱼街 + 女人街', place: 'Flower Market Road Mong Kok', gmap: 'https://www.google.com/maps/search/?api=1&query=Flower+Market+Road+Mong+Kok', cmap: 'https://citymapper.com/directions?endname=Flower+Market+Road+Mong+Kok&region_id=hk-hongkong', tag: '必打卡', desc: '<b>花墟道</b>整条街卖花 · <b>金鱼街</b>整条挂金鱼袋 · <b>通菜街女人街</b>小商品夜市（白天也开档）' },
+      { t: '14:45', type: 'food', title: '老冰室歇脚 · 中国冰室（旺角砵兰街 111 号）', place: 'China Cafe Mong Kok Portland', gmap: 'https://www.google.com/maps/search/?api=1&query=China+Cafe+Mong+Kok+Portland+Street', cmap: 'https://citymapper.com/directions?endname=China+Cafe+Portland+Street+Mong+Kok&region_id=hk-hongkong', tag: '1964 老铺', desc: '<b>红胶座椅 + 老风扇</b> · <b>必点</b>：冻鸳鸯 + 蛋挞 + 菠萝包 · <em>拍照必坐窗边卡座</em>' },
+      { t: '15:30', type: 'transit', title: 'MTR 旺角 → 湾仔（取行李）', place: 'Mong Kok MTR', gmap: 'https://www.google.com/maps/search/?api=1&query=Mong+Kok+MTR', cmap: 'https://citymapper.com/directions?endname=Mong+Kok+MTR&region_id=hk-hongkong', desc: '荃湾线到中环 → 换港岛线到湾仔 · 25 分钟' },
+      { t: '16:00', type: 'rest', title: 'YMCA 前台取行李', place: HOTEL.name, gmap: HOTEL.gmap, cmap: HOTEL.cmap, desc: '前台拿回寄存的行李 · 步行 3 分钟到湾仔君悦坐 K1' },
+      { t: '16:15', type: 'transit', title: 'K1 免费穿梭巴士 · 湾仔 → 香港站', place: 'Wan Chai K1 Bus Stop', gmap: 'https://www.google.com/maps/search/?api=1&query=Grand+Hyatt+Hong+Kong', cmap: 'https://citymapper.com/directions?endname=Grand+Hyatt+Hong+Kong&region_id=hk-hongkong', tag: '免费', desc: '<b>免费</b> · 10 分钟到香港站' },
+      { t: '16:30', type: 'transit', title: '机场快线 · 香港站 → HKG', place: 'Hong Kong Station Airport Express', gmap: 'https://www.google.com/maps/search/?api=1&query=Hong+Kong+Station+Airport+Express', cmap: 'https://citymapper.com/directions?endname=Hong+Kong+Station&region_id=hk-hongkong', desc: '<b>24 分钟直达 HKG</b> · 每 10 分钟一班' },
+      { t: '17:00', type: 'transit', title: 'HKG T1 · 川航自助值机', place: 'Hong Kong Airport T1', gmap: 'https://www.google.com/maps/search/?api=1&query=Hong+Kong+International+Airport+Terminal+1', cmap: 'https://citymapper.com/directions?endname=Hong+Kong+Airport+Terminal+1&region_id=hk-hongkong', desc: '<b>不用托运</b> · 自助机器扫护照直接拿登机牌' },
+      { t: '17:15', type: 'transit', title: '过关 + 免税店', place: 'HKG Departure', gmap: 'https://www.google.com/maps/search/?api=1&query=Hong+Kong+International+Airport+Departure', cmap: 'https://citymapper.com/directions?endname=Hong+Kong+International+Airport&region_id=hk-hongkong', desc: '<b>DFS、莎莎、万宁</b> · 妆品比市区莎莎更便宜 · 1 小时可以慢慢逛' },
+      { t: '18:40', type: 'transit', title: '✈️ 川航 3U 香港 T1 → 双流 T1', place: 'HKG Terminal 1', gmap: 'https://www.google.com/maps/search/?api=1&query=Hong+Kong+International+Airport+Terminal+1', cmap: 'https://citymapper.com/directions?endname=Hong+Kong+Airport+Terminal+1&region_id=hk-hongkong', desc: '直飞 2h30m' },
+      { t: '21:10', type: 'transit', title: '🛬 到达成都双流 T1', place: 'Chengdu Shuangliu Airport T1', gmap: 'https://www.google.com/maps/search/?api=1&query=Chengdu+Shuangliu+Airport+T1', cmap: 'https://citymapper.com/directions?endname=Chengdu+Shuangliu+Airport&region_id=hk-hongkong', desc: '到家 🏠' }
     ]
   }
 ];
@@ -715,11 +716,11 @@ days.forEach((day, i) => {
   day.events.forEach(ev => {
     const tag = ev.tag ? `<span class="tag">${ev.tag}</span>` : '';
     const gmap = ev.gmap ? `<a class="map-link" href="${ev.gmap}" target="_blank">📍 Google</a>` : '';
-    const amap = ev.amap ? `<a class="map-link apple" href="${ev.amap}" target="_blank">🍎 Apple</a>` : '';
+    const cmap = ev.cmap ? `<a class="map-link citymapper" href="${ev.cmap}" target="_blank">🚇 Citymapper</a>` : '';
     html += `
       <div class="event ${ev.type}">
         <div class="time">${ev.t}</div>
-        <div class="title">${ev.title} ${tag} ${gmap} ${amap}</div>
+        <div class="title">${ev.title} ${tag} ${gmap} ${cmap}</div>
         <div class="desc">${ev.desc || ''}</div>
       </div>
     `;
@@ -735,7 +736,7 @@ days.forEach((day, i) => {
         <div class="mini">
           <div class="lbl">Stay</div>
           <div class="val">${day.stay.name}<br><small>${day.stay.addr}</small><br>
-          <a href="${day.stay.gmap}" target="_blank">📍 Google</a> · <a href="${day.stay.amap}" target="_blank">🍎 Apple</a></div>
+          <a href="${day.stay.gmap}" target="_blank">📍 Google</a> · <a href="${day.stay.cmap}" target="_blank">🚇 Citymapper</a></div>
         </div>
       </div>
     `;
