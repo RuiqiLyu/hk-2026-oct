@@ -216,7 +216,7 @@ footer small { font-size: 11px; letter-spacing: 1px; }
   <div class="kicker">Hong Kong · 3 Days 2 Nights · October 2026</div>
   <h1>香港 · 三天两晚</h1>
   <div class="flag-row">🇭🇰</div>
-  <div class="subtitle">2026 年 10 月 17 日（六）— 10 月 19 日（一） · 国航天府往 + 川航双流返 · 湾仔 YMCA 落脚</div>
+  <div class="subtitle">2026 年 10 月 17 日（六）— 10 月 19 日（一） · 天府往 + 双流返 · 湾仔 酒店 落脚</div>
   <nav class="nav-bar">
     <a href="index.html" class="active">🏠 主页</a>
     <a href="travel.html">✈️ 大交通</a>
@@ -227,7 +227,7 @@ footer small { font-size: 11px; letter-spacing: 1px; }
 <!-- Focus / Countdown -->
 <div class="focus">
   <div class="label">此刻关注 · Next Up</div>
-  <div class="event-title" id="focusTitle">国航 CA 天府 T1 起飞</div>
+  <div class="event-title" id="focusTitle">天府 T1 起飞</div>
   <div class="event-when">
     <b id="focusWhen">2026-10-17 09:10</b> · <span id="focusTz">北京时间 (UTC+8)</span>
   </div>
@@ -340,7 +340,7 @@ footer small { font-size: 11px; letter-spacing: 1px; }
 <details class="section">
   <summary>
     <h2 style="margin:0;"><span class="num">02</span>🎫 官方入口 · 提前下单</h2>
-    <span class="summary-preview">机票 · 酒店 · 山顶缆车 · 港铁 · 天气 · 6 个链接</span>
+    <span class="summary-preview">山顶缆车 · 港铁 · 天气 · 八达通 · 4 个链接</span>
     <span class="expand-hint"></span>
   </summary>
   <div class="content">
@@ -352,7 +352,7 @@ footer small { font-size: 11px; letter-spacing: 1px; }
 <details class="section" open>
   <summary>
     <h2 style="margin:0;"><span class="num">03</span>📝 待办清单</h2>
-    <span class="summary-preview">出发前必做 · 12 项</span>
+    <span class="summary-preview">出发前必做 · 10 项</span>
     <span class="expand-hint"></span>
   </summary>
   <div class="content">
@@ -416,13 +416,13 @@ footer small { font-size: 11px; letter-spacing: 1px; }
 
 <script>
 // ============= DATA =============
-// 去程: 国航 CA 天府 09:10 → 香港 11:50
-// 回程: 川航 3U 香港 18:40 → 双流 21:10
+// 去程: 天府 09:10 → 香港 11:50
+// 回程: 香港 18:40 → 双流 21:10
 const TRIP_START = new Date('2026-10-17T09:10:00+08:00');
 const TRIP_END = new Date('2026-10-19T21:10:00+08:00');
 const HOTEL = {
-  name: '香港基督教青年会宾馆 The Harbourview',
-  addr: '香港湾仔港湾道 4 号',
+  name: '湾仔住宿',
+  addr: '香港湾仔',
   gmap: 'https://www.google.com/maps/search/?api=1&query=The+Harbourview+YMCA+Hong+Kong+Wan+Chai',
   cmap: 'https://citymapper.com/directions?endname=The+Harbourview+YMCA+Hong+Kong&region_id=hk-hongkong'
 };
@@ -438,10 +438,10 @@ const days = [
     stay: HOTEL,
     events: [
       { t: '06:00', type: 'rest', title: '起床 · 去天府 T1', place: 'Chengdu Tianfu International Airport', gmap: 'https://www.google.com/maps/search/?api=1&query=Chengdu+Tianfu+International+Airport', cmap: 'https://citymapper.com/directions?endname=Chengdu+Tianfu+International+Airport&region_id=hk-hongkong', desc: '打车/地铁到 <b>天府机场 T1</b> · 7:10 前完成值机' },
-      { t: '09:10', type: 'transit', title: '✈️ 国航 CA 天府 T1 起飞 → 香港 T1', place: 'Chengdu Tianfu T1', gmap: 'https://www.google.com/maps/search/?api=1&query=Chengdu+Tianfu+Airport+T1', cmap: 'https://citymapper.com/directions?endname=Chengdu+Tianfu+Airport+T1&region_id=hk-hongkong', desc: '直飞 <b>2h40m</b>，到港 11:50。<em>右侧靠窗看得到珠江口</em>' },
+      { t: '09:10', type: 'transit', title: '✈️ 天府 T1 起飞 → 香港 T1', place: 'Chengdu Tianfu T1', gmap: 'https://www.google.com/maps/search/?api=1&query=Chengdu+Tianfu+Airport+T1', cmap: 'https://citymapper.com/directions?endname=Chengdu+Tianfu+Airport+T1&region_id=hk-hongkong', desc: '直飞 <b>2h40m</b>，到港 11:50。<em>右侧靠窗看得到珠江口</em>' },
       { t: '12:00', type: 'transit', title: '过关 → 机场快线', place: 'Hong Kong International Airport', gmap: 'https://www.google.com/maps/search/?api=1&query=Hong+Kong+International+Airport', cmap: 'https://citymapper.com/directions?endname=Hong+Kong+International+Airport&region_id=hk-hongkong', desc: '"访客通道"约 20 分钟 · <b>机场快线</b> HK$115 · 24 分钟到香港站' },
       { t: '12:55', type: 'transit', title: '香港站 → K1 免费穿梭巴士 → 湾仔', place: 'Hong Kong Station', gmap: 'https://www.google.com/maps/search/?api=1&query=Hong+Kong+Station', cmap: 'https://citymapper.com/directions?endname=Hong+Kong+Station&region_id=hk-hongkong', desc: 'K1 每 20 分钟一班 · <em>凭机场快线票免费</em>' },
-      { t: '13:15', type: 'rest', title: 'YMCA 寄存行李 · 或提前 check-in', place: 'The Harbourview YMCA', gmap: HOTEL.gmap, cmap: HOTEL.cmap, desc: '前台 14:00 才办入住，早到可先寄存行李快速换轻装' },
+      { t: '13:15', type: 'rest', title: '酒店寄存行李 · 或提前 check-in', place: '住宿', gmap: HOTEL.gmap, cmap: HOTEL.cmap, desc: '前台 14:00 才办入住，早到可先寄存行李快速换轻装' },
       { t: '13:30', type: 'food', title: '午餐 · 华姐清汤腩（湾仔骆克道 265 号）', place: 'Wah Kee Beef Brisket Wan Chai', gmap: 'https://www.google.com/maps/search/?api=1&query=Wah+Kee+Beef+Brisket+Wan+Chai+Lockhart+Road', cmap: 'https://citymapper.com/directions?endname=Wah+Kee+Beef+Brisket+Wan+Chai&region_id=hk-hongkong', tag: '街坊铺', desc: '<b>必点</b>：清汤牛腩河粉 + 咸柠七。米其林推荐，人均 HK$80' },
       { t: '14:30', type: 'transit', title: '步行到湾仔码头', place: 'Wan Chai Ferry Pier', gmap: 'https://www.google.com/maps/search/?api=1&query=Wan+Chai+Ferry+Pier', cmap: 'https://citymapper.com/directions?endname=Wan+Chai+Ferry+Pier&region_id=hk-hongkong', desc: '从华姐走到湾仔码头 8 分钟' },
       { t: '14:45', type: 'transit', title: '★ 天星小轮 · 湾仔 → 尖沙咀', place: 'Star Ferry Wan Chai Pier', gmap: 'https://www.google.com/maps/search/?api=1&query=Star+Ferry+Wan+Chai+Pier', cmap: 'https://citymapper.com/directions?endname=Star+Ferry+Wan+Chai+Pier&region_id=hk-hongkong', tag: '必打卡', desc: '<b>HK$5 · 上层最前排</b>，7 分钟航程看维港白天' },
@@ -488,7 +488,7 @@ const days = [
     transport: '叮叮车 + 山顶缆车 + K1 + 机场快线',
     stay: null,
     events: [
-      { t: '08:00', type: 'rest', title: '起床 · YMCA 自助早餐', place: HOTEL.name, gmap: HOTEL.gmap, cmap: HOTEL.cmap, desc: '房价含自助早餐 · 7:00-10:00 供应' },
+      { t: '08:00', type: 'rest', title: '起床 · 酒店自助早餐', place: HOTEL.name, gmap: HOTEL.gmap, cmap: HOTEL.cmap, desc: '房价含自助早餐 · 7:00-10:00 供应' },
       { t: '09:30', type: 'rest', title: 'Check out · 前台寄存行李', place: HOTEL.name, gmap: HOTEL.gmap, cmap: HOTEL.cmap, desc: '<b>行李寄存前台</b>，下午 14:00 回来取' },
       { t: '10:00', type: 'transit', title: '★ 叮叮车 · 湾仔庄士敦道 → 中环花园道', place: 'Wan Chai Tram Stop', gmap: 'https://www.google.com/maps/search/?api=1&query=Wan+Chai+Tram+Johnston+Road', cmap: 'https://citymapper.com/directions?endname=Wan+Chai+Tram+Johnston+Road&region_id=hk-hongkong', tag: '必打卡', desc: '<b>HK$3</b> · <em>坐上层最前排</em>，25 分钟穿过老城慢慢晃到中环' },
       { t: '10:30', type: 'attraction', title: '花园道山顶缆车站', place: 'Peak Tram Central Terminus', gmap: 'https://www.google.com/maps/search/?api=1&query=Peak+Tram+Central+Terminus+Garden+Road', cmap: 'https://citymapper.com/directions?endname=Peak+Tram+Central+Terminus&region_id=hk-hongkong', desc: '用 <b>Klook 电子票</b>免排一半队 · 直接扫码上车' },
@@ -497,21 +497,18 @@ const days = [
       { t: '12:30', type: 'transit', title: '花园道 → 中环 Wellington Street（步行下坡）', place: 'Central Wellington Street', gmap: 'https://www.google.com/maps/search/?api=1&query=Wellington+Street+Central+Hong+Kong', cmap: 'https://citymapper.com/directions?endname=Wellington+Street+Central&region_id=hk-hongkong', desc: '沿花园道下坡到威灵顿街 · 步行 15 分钟' },
       { t: '12:45', type: 'food', title: '午餐 · 九记牛腩（中环歌赋街 21 号）', place: 'Kau Kee Beef Brisket Central', gmap: 'https://www.google.com/maps/search/?api=1&query=Kau+Kee+Beef+Brisket+Central', cmap: 'https://citymapper.com/directions?endname=Kau+Kee+Beef+Brisket+Central&region_id=hk-hongkong', tag: '米其林推荐', desc: '<b>必点</b>：清汤牛腩伊面 + 咖喱牛筋腩 · <em>只收现金</em> · 人均 HK$100' },
       { t: '14:00', type: 'transit', title: 'MTR 中环 → 湾仔', place: 'Central MTR', gmap: 'https://www.google.com/maps/search/?api=1&query=Central+MTR', cmap: 'https://citymapper.com/directions?endname=Central+MTR&region_id=hk-hongkong', desc: '港岛线 1 站 · 3 分钟' },
-      { t: '14:15', type: 'rest', title: 'YMCA 前台取行李', place: HOTEL.name, gmap: HOTEL.gmap, cmap: HOTEL.cmap, desc: '拿回寄存的行李 · 步行 3 分钟到湾仔君悦坐 K1' },
+      { t: '14:15', type: 'rest', title: '酒店前台取行李', place: HOTEL.name, gmap: HOTEL.gmap, cmap: HOTEL.cmap, desc: '拿回寄存的行李 · 步行 3 分钟到湾仔君悦坐 K1' },
       { t: '14:30', type: 'transit', title: 'K1 免费穿梭巴士 · 湾仔 → 香港站', place: 'Wan Chai K1 Bus Stop', gmap: 'https://www.google.com/maps/search/?api=1&query=Grand+Hyatt+Hong+Kong', cmap: 'https://citymapper.com/directions?endname=Grand+Hyatt+Hong+Kong&region_id=hk-hongkong', tag: '免费', desc: '<b>免费</b> · 10 分钟到香港站' },
       { t: '15:00', type: 'transit', title: '机场快线 · 香港站 → HKG', place: 'Hong Kong Station Airport Express', gmap: 'https://www.google.com/maps/search/?api=1&query=Hong+Kong+Station+Airport+Express', cmap: 'https://citymapper.com/directions?endname=Hong+Kong+Station+Airport+Express&region_id=hk-hongkong', desc: '<b>24 分钟直达 HKG</b>' },
-      { t: '15:30', type: 'transit', title: 'HKG T1 · 川航自助值机', place: 'Hong Kong Airport T1', gmap: 'https://www.google.com/maps/search/?api=1&query=Hong+Kong+International+Airport+Terminal+1', cmap: 'https://citymapper.com/directions?endname=Hong+Kong+International+Airport+Terminal+1&region_id=hk-hongkong', desc: '<b>不用托运</b> · 自助机器扫护照直接拿登机牌' },
+      { t: '15:30', type: 'transit', title: 'HKG T1 · 自助值机', place: 'Hong Kong Airport T1', gmap: 'https://www.google.com/maps/search/?api=1&query=Hong+Kong+International+Airport+Terminal+1', cmap: 'https://citymapper.com/directions?endname=Hong+Kong+International+Airport+Terminal+1&region_id=hk-hongkong', desc: '<b>不用托运</b> · 自助机器扫护照直接拿登机牌' },
       { t: '16:00', type: 'transit', title: '过关 + 免税店（充裕 2 小时）', place: 'HKG Departure', gmap: 'https://www.google.com/maps/search/?api=1&query=Hong+Kong+International+Airport+Departure', cmap: 'https://citymapper.com/directions?endname=Hong+Kong+International+Airport+Departure&region_id=hk-hongkong', desc: '<b>DFS、莎莎、万宁</b> · 妆品比市区莎莎更便宜 · <em>时间充裕慢慢逛</em>' },
-      { t: '18:40', type: 'transit', title: '✈️ 川航 3U 香港 T1 → 双流 T1', place: 'HKG Terminal 1', gmap: 'https://www.google.com/maps/search/?api=1&query=Hong+Kong+International+Airport+Terminal+1', cmap: 'https://citymapper.com/directions?endname=Hong+Kong+International+Airport+Terminal+1&region_id=hk-hongkong', desc: '直飞 2h30m' },
+      { t: '18:40', type: 'transit', title: '✈️ 香港 T1 → 双流 T1', place: 'HKG Terminal 1', gmap: 'https://www.google.com/maps/search/?api=1&query=Hong+Kong+International+Airport+Terminal+1', cmap: 'https://citymapper.com/directions?endname=Hong+Kong+International+Airport+Terminal+1&region_id=hk-hongkong', desc: '直飞 2h30m' },
       { t: '21:10', type: 'transit', title: '🛬 到达成都双流 T1', place: 'Chengdu Shuangliu Airport T1', gmap: 'https://www.google.com/maps/search/?api=1&query=Chengdu+Shuangliu+Airport+T1', cmap: 'https://citymapper.com/directions?endname=Chengdu+Shuangliu+Airport+T1&region_id=hk-hongkong', desc: '到家 🏠' }
     ]
   }
 ];
 
 const bookings = [
-  { name: '国航机票 · 去程 天府→香港', when: '⏰ 越早越好', hint: 'CA 09:10-11:50 直飞', url: 'https://www.airchina.com.cn/' },
-  { name: '川航机票 · 回程 香港→双流', when: '⏰ 越早越好', hint: '3U 18:40-21:10 直飞', url: 'https://www.sichuanair.com/' },
-  { name: '酒店 · YMCA Harbourview', when: '⏰ 提前 1 周锁价', hint: '¥770/晚 · 双床房 · 湾仔码头旁', url: 'https://www.booking.com/hotel/hk/the-salisbury-ymca-of-hong-kong.zh-cn.html' },
   { name: '山顶缆车 + 凌霄阁套票', when: '⏰ 出发前 1-2 天买', hint: 'Klook 电子票 ~HK$140 免半程排队', url: 'https://www.klook.com/zh-CN/activity/16-peak-tram-and-sky-terrace-428-ticket-hong-kong/' },
   { name: '香港机场快线（提前买 8 折）', when: '⏰ 出发前一天', hint: 'Trip.com 单程 ~HK$95 vs 现场 HK$115', url: 'https://www.mtr.com.hk/ch/customer/tickets/ae_intro.html' },
   { name: '实时天气预报', when: '⏰ 出发前 3 天', hint: '10 月香港偶有台风尾巴，看看有无橙色暴雨', url: 'https://www.hko.gov.hk/tc/' },
@@ -520,8 +517,6 @@ const bookings = [
 
 const todos = [
   { text: '<b>确认港澳通行证 + 香港签注</b>（剩至少 1 次，有效期覆盖 10/19）' },
-  { text: '<b>购买机票</b>：去程 <b>国航 CA</b> 天府 09:10-11:50 + 回程 <b>川航 3U</b> 香港 18:40-双流 21:10' },
-  { text: '<b>预订 YMCA Harbourview</b> 2 晚双床房（Booking / Agoda）' },
   { text: '<b>Klook 买山顶缆车 + 凌霄阁套票</b>（免半程排队）' },
   { text: '<b>Trip.com 买机场快线来回票</b>（比现场 8 折）' },
   { text: '<b>支付宝→香港八达通</b>：领电子卡，充 HK$150（两张）' },
@@ -560,14 +555,14 @@ const packing = [
     { name: '内衣内裤 × 4 天' },
     { name: '袜子 × 4 双' },
     { name: '舒适运动鞋', note: '爬太平山 + 逛老街' },
-    { name: '睡衣（YMCA 房间没有）' }
+    { name: '睡衣' }
   ]},
   { icon: '🧴', name: '洗漱类', items: [
-    { name: '牙刷 + 牙膏', note: 'YMCA 提供但自带更好' },
+    { name: '牙刷 + 牙膏', note: '酒店提供但自带更好' },
     { name: '洗面奶 / 卸妆' },
     { name: '面霜 / 防晒（SPF 30+）' },
     { name: '梳子' },
-    { name: '毛巾（YMCA 提供）' },
+    { name: '毛巾（酒店提供）' },
     { name: '护肤品' }
   ]},
   { icon: '💊', name: '药品类', items: [
@@ -615,8 +610,8 @@ const apps = [
 ];
 
 const budget = [
-  ['✈️ 机票 · 国航去程 + 川航回程（2 人）', '¥4,600'],
-  ['🏨 酒店 2 晚 YMCA', '¥1,540'],
+  ['✈️ 机票 · 往返直飞（2 人）', '¥4,600'],
+  ['🏨 酒店 2 晚', '¥1,540'],
   ['🚄 机场快线 RT + K1（免费）+ 市内交通 + 叮叮车 + 小轮', '¥600'],
   ['🎢 山顶缆车 + 凌霄阁套票（2 人）', '¥280'],
   ['🍽️ 餐饮（6 顿正餐 + 3 顿老铺咖啡/冰室）', '¥2,200'],
